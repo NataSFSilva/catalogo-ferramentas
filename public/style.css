@@ -1,0 +1,18 @@
+* {
+    --azulDock: #00D8D8;
+    --cinzaDock: #6F7A79;
+    --amareloDock: #EEFF88;
+}
+
+body {
+    background-color: #000;
+}
+
+form {
+  margin: 0 auto;
+  width: 400px;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  background-color: #FFF;
+}

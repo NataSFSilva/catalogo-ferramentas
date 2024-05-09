@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionário Onboard</title>
+  <link rel="shortcut icon" href="./assets/210823.Dock.Logo.REFINADO.RGB_Simbolo.Preto.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <form>
+     <div class="question">
+        <label for="title">1- Qual ambiente será monitorado?</label>
+      </div>
+      <div>
+        <input type="radio" id="prod" value="prod"/>
+        <label for="prod">PROD</label>
+      </div>
+      <div>
+        <input type="radio" id="hml" value="hml"/>
+        <label for="hml">HML</label>
+      </div>
+      <div>
+        <input type="radio" id="DEV" value="DEV"/>
+        <label for="DEV">DEV</label>
+      </div>
+
+     <div class="question">
+        <label for="title">2- Qual o pilar da observabilidade constitui a aplicação?</label>
+      </div>
+      <div>
+        <input type="radio" id="logs" value="logs"/>
+        <label for="logs">Logs</label>
+      </div>
+      <div>
+        <input type="radio" id="traces" value="traces"/>
+        <label for="traces">Traces</label>
+      </div>
+      <div>
+        <input type="radio" id="metricas" value="metricas"/>
+        <label for="metricas">Métricas</label>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
+<script src="./script.js"></script>
