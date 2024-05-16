@@ -17,52 +17,38 @@
   </div>
 
   <div class="container">
-    <div class="app">
+    <div class="box">
       <h2>1. Informe o seu email</h2>
-      <div class="quiz">
-        <div id="answer-button">
           <input type="text" class="inp">
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="container">
-    <div class="app">
+    <div class="box">
       <h2>2. Qual é o nome da sua aplicação?</h2>
-      <div class="quiz">
-        <input type="text" class="inp">
-      </div>
+      <input type="text" class="inp">
     </div>
   </div>
 
   <div class="container">
-    <div class="app">
+    <div class="box">
       <h2>3. Qual ambiente será monitorado?</h2>
-      <div class="quiz">
-        <div id="answer-button">
-          <button class="btn" onclick="devAmbient()">Dev</button>
-          <button class="btn">Hml</button>
-          <button class="btn">Prod</button>
-        </div>
-      </div>
+      <button class="btn" onclick="devAmbient()">Dev</button>
+      <button class="btn">Hml</button>
+      <button class="btn">Prod</button>
     </div>
   </div>
 
   <div class="container" id="sos" style="display: none;">
-    <div class="app">
+    <div class="box">
       <h2>4. Você tem acesso a ferramenta SOS?</h2>
-      <div class="quiz">
-        <div id="answer-button">
-          <button class="btn" onclick="documentacao(true)">Sim</button>
-          <button class="btn" onclick="documentacao(false)">Não</button>
-        </div>
-      </div>
+      <button class="btn" onclick="documentacao(true)">Sim</button>
+      <button class="btn" onclick="documentacao(false)">Não</button>
     </div>
   </div>
 
   <div class="container" id="acesso" style="display: none;">
-    <div class="app">
+    <div class="box">
       <h2>
         <a href="https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3178267886/Grafana+Dev" target="_blank"
           rel="noopener noreferrer">
@@ -73,220 +59,178 @@
   </div>
 
   <div class="container" id="pilarObs" style="display: none;">
-    <div class="app">
+    <div class="box">
       <h2>5. Qual o pilar da observabilidade constitui a aplicação?</h2>
-      <div class="quiz">
-        <div id="answer-button">
-          <button class="btn" onclick="caminhoPilar('metrics')">Metricas</button>
-          <button class="btn" onclick="caminhoPilar('logs')">Logs</button>
-          <button class="btn">Traces</button>
-        </div>
-      </div>
+      <button class="btn" onclick="caminhoPilar('metrics')">Metricas</button>
+      <button class="btn" onclick="caminhoPilar('logs')">Logs</button>
+      <button class="btn">Traces</button>
     </div>
   </div>
 
   <!-- ------------------------------------------------------------------------------ -->
 
-  <div class="container metrics" id="provedor" style="display: none;">
-    <div class="app">
+  <div class="container metrics" id="provedor" style="display: flex;">
+    <div class="box">
       <h2>6. Qual provedor a aplicação utiliza?</h2>
-      <div class="quiz">
-        <div id="answer-button">
-
-        </div>
-      </div>
+      <button class="btn"></button>
+      <button class="btn"></button>
+      <button class="btn"></button>
+      <input type="text" class="inp">
     </div>
   </div>
 
   <div class="container metrics" id="tecnologia" style="display: none;">
-    <div class="app">
+    <div class="box">
       <h2>7. Tecnologia utilizada? (Java, GO, Python, php, etc.)</h2>
-      <div class="quiz">
-        <div id="answer-button">
 
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="container metrics" id="infraestrutura" style="display: none;">
-    <div class="app">
+    <div class="box">
       <h2>8. Qual infraestrutura a aplicação utiliza? Ex: Kubernetes, Docker, VirtualMachine, Lambda...</h2>
-      <div class="quiz">
-        <div id="answer-button">
 
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="container metrics" id="dependencia" style="display: none;">
-    <div class="app">
+    <div class="box">
       <h2>9. A aplicação possui alguma dependência de pacotes de ferramentas de observabilidade?</h2>
-      <div class="quiz">
-        <div id="answer-button">
 
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="container metrics" id="escalabilidade" style="display: none;">
-    <div class="app">
+    <div class="box">
       <h2>10. Caso a infraestrutura seja conteinerizada qual o máximo e mínimo de escalonamento de pods e nodes?</h2>
-      <div class="quiz">
-        <div id="answer-button">
 
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="container metrics" id="metricas" style="display: none;">
-    <div class="app">
+    <div class="box">
       <h2>11. Quais métricas serão necessárias?</h2>
-      <div class="quiz">
-        <div id="answer-button">
 
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="container metrics" id="apm" style="display: none;">
-    <div class="app">
+    <div class="box">
       <h2>12. Caso necessário. Quais métricas de APM serão utilizadas? Ex: Resource</h2>
-      <div class="quiz">
-        <div id="answer-button">
 
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="container metrics" id="auditoria" style="display: none;">
-    <div class="app">
+    <div class="box">
       <h2>13. A aplicação exige auditoria 100% das métricas para validação? Ex: Métrica transacional Pix, precisa
         devido a criticidade.</h2>
-      <div class="quiz">
-        <div id="answer-button">
 
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="container metrics" id="impacto" style="display: none;">
-    <div class="app">
+    <div class="box">
       <h2>14. Qual o impacto da aplicação caso ela fique indisponível?</h2>
-      <div class="quiz">
-        <div id="answer-button">
 
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="container metrics" id="time" style="display: none;">
-    <div class="app">
+    <div class="box">
       <h2>15. Informar qual o time responsável pela aplicação (conhecimento das regras de negócio) para
         desenvolvimento dos objetos de monitoria (dashboard, alert e report)</h2>
-      <div class="quiz">
-        <div id="answer-button">
 
-        </div>
-      </div>
     </div>
   </div>
 
 
   <!-- ------------------------------------------------------------------------------ -->
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>6. Nome do index (tudo minúsculo, com a separação feita com traços"-" | Ex: pier-logs)</h2>
     </div>
   </div>
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>7. Qual será o tempo de retenção?</h2>
     </div>
   </div>
 
-  <!-- As outras perguntas continuam aqui, seguindo a numeração correta -->
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>8. Os logs serão auditados?</h2>
     </div>
   </div>
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>9. Os logs são estruturados em Json?</h2>
     </div>
   </div>
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>10. Qual a volumetria esperada para aplicação? (valor aproximado)</h2>
     </div>
   </div>
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>11. É esperado o crescimento progressivo da volumetria dos logs?</h2>
     </div>
   </div>
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>12. Favor disponibilizar um log para análise dos parâmetros:</h2>
     </div>
   </div>
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>13. Cite quais os "parâmetros" que serão indexados e que serão utilizados para os objetos de monitoria (Ex:
         issuer, motivoResposta, statusCode)</h2>
     </div>
   </div>
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>14. Qual o tipo de integração que será utilizada para coleta de log?</h2>
     </div>
   </div>
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>15. Caso a integração seja via agent, informar o caminho completo do diretório do log.</h2>
     </div>
   </div>
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>16. Caso o envio seja via HTTP, é possível o "acknowledgement" na solução do envio? Confirmação do recebimento
         do evento por parte da ferramenta de observabilidade. (obs: aplicações que utilizam o kafka para o envio
         precisam da opção habilitada)</h2>
     </div>
   </div>
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>17. As métricas de infraestrutura da aplicação estão sendo monitoradas? Favor informar qual aplicação está
         sendo utilizada.</h2>
     </div>
   </div>
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>18. Qual o impacto da aplicação caso ela fique indisponível?</h2>
     </div>
   </div>
 
-  <div class="container" id="perguntasExtras" style="display: none;">
-    <div class="app">
+  <div class="container logs" style="display: none;">
+    <div class="box">
       <h2>19. Informar qual o time responsável pela aplicação (conhecimento das regras de negócio) para desenvolvimento
         dos objetos de monitoria (dashboard, alert e report)</h2>
     </div>

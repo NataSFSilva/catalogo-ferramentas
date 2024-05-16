@@ -5,6 +5,8 @@ class Ferramenta {
     }
 }
 
+// adicionar validação para emails dock.tech
+
 function devAmbient() {
     document.getElementById('sos').style.display = "flex"
 }
@@ -22,13 +24,14 @@ function caminhoPilar(pilar) {
     if (pilar == "metrics") {
         var metricas = document.getElementsByClassName('metrics')
 
-        console.log(metricas)
-        console.log(metricas.length)
-        console.log(metricas[0])
         for (let i = 0; i < metricas.length; i++) {
             metricas[i].style.display = "flex"
         }
     } else if (pilar == "logs") {
-        var metricas = document.getElementsByClassName
+        var logs = document.getElementsByClassName('logs')
+
+        for (let i = 0; i < logs.length; i++) {
+            logs[i].style.display = "flex"
+        }
     }
 }

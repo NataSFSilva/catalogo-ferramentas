@@ -1,17 +1,17 @@
+@font-face {
+  font-family: RobotoMono;
+  src: url(./Font/Roboto\ Mono/static/);
+}
+
 * {
   margin: 0;
   padding: 0;
-  /* font-family: ; */
   --azulDock: #00D8D8;
   --cinzaDock: #6F7A79;
   --amareloDock: #EEFF88;
   --preto: #000000;
 }
 
-@font-face {
-  font-family: Roboto Mono;
-  src: url(../public/Font/Roboto\ Mono/RobotoMono-VariableFont_wght);
-}
 
 body {
   background: var(--azulDock);
@@ -39,7 +39,7 @@ body {
   margin: 24px;
 }
 
-.app {
+.box {
   background-color: var(--preto);
   color: #FFF;
   width: 90%;
@@ -47,7 +47,7 @@ body {
   padding: 32px;
 }
 
-.app h2 {
+.box h2 {
   font-size: 25px;
   font-weight: 600;
   padding-bottom: 20px;
