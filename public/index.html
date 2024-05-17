@@ -57,18 +57,29 @@
       </h2>
     </div>
   </div>
-
+  
   <div class="container" id="pilarObs" style="display: none;">
     <div class="box">
       <h2>5. Qual o pilar da observabilidade constitui a aplicação?</h2>
       <button class="btn" onclick="caminhoPilar('metrics')">Metricas</button>
       <button class="btn" onclick="caminhoPilar('logs')">Logs</button>
-      <button class="btn">Traces</button>
+      <button class="btn" onclick="caminhoPilar('traces')">Traces</button>
+    </div>
+  </div>
+  
+  <div class="container" id="tracesDoc" style="display: none;">
+    <div class="box">
+      <h2>
+        <a href="https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3178267121/Grafana+Tempo" target="_blank"
+          rel="noopener noreferrer">
+          Documentação do Grafana Tempo
+        </a>
+      </h2>
     </div>
   </div>
 
   <!-- ------------------------------------------------------------------------------ -->
-
+  
   <div class="container metrics" id="provedor" style="display: none;">
     <div class="box">
       <h2>6. Qual provedor a aplicação utiliza?</h2>
@@ -184,7 +195,7 @@
   
   <div class="container logs" style="display: none;">
     <div class="box">
-      <h2>9. Os logs são estruturados em Json?</h2>
+      <h2>9. Os logs são estruturados em JSON?</h2>
       <button class="btn">Sim</button>
       <input type="text" class="inp" placeholder="Outros...">
     </div>
