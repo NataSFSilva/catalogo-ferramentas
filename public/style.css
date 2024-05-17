@@ -87,14 +87,3 @@ body {
   background-color: var(--amareloDock);
   color: #000;
 }
-
-
-form {
-  margin: 0 auto;
-  width: 400px;
-  padding: 1em;
-  border: 1px solid #ccc;
-  border-radius: 1em;
-  background-color: var(--preto);
-  color: #FFF;
-}

@@ -19,14 +19,14 @@
   <div class="container">
     <div class="box">
       <h2>1. Informe o seu email</h2>
-          <input type="text" class="inp">
+          <input type="text" class="inp" placeholder="example@dock.tech">
     </div>
   </div>
 
   <div class="container">
     <div class="box">
       <h2>2. Qual é o nome da sua aplicação?</h2>
-      <input type="text" class="inp">
+      <input type="text" class="inp" placeholder="">
     </div>
   </div>
 
@@ -69,78 +69,88 @@
 
   <!-- ------------------------------------------------------------------------------ -->
 
-  <div class="container metrics" id="provedor" style="display: flex;">
+  <div class="container metrics" id="provedor" style="display: none;">
     <div class="box">
       <h2>6. Qual provedor a aplicação utiliza?</h2>
-      <button class="btn"></button>
-      <button class="btn"></button>
-      <button class="btn"></button>
-      <input type="text" class="inp">
+      <button class="btn">AWS</button>
+      <button class="btn">GCP</button>
+      <button class="btn">Azure</button>
+      <input type="text" class="inp" placeholder="Outros...">
     </div>
   </div>
-
+  
   <div class="container metrics" id="tecnologia" style="display: none;">
     <div class="box">
       <h2>7. Tecnologia utilizada? (Java, GO, Python, php, etc.)</h2>
-
+      <input type="text" class="inp" placeholder="Texto de resposta curta">
     </div>
   </div>
-
+  
   <div class="container metrics" id="infraestrutura" style="display: none;">
     <div class="box">
       <h2>8. Qual infraestrutura a aplicação utiliza? Ex: Kubernetes, Docker, VirtualMachine, Lambda...</h2>
-
+      <input type="text" class="inp" placeholder="Texto de resposta curta">
     </div>
   </div>
 
   <div class="container metrics" id="dependencia" style="display: none;">
     <div class="box">
       <h2>9. A aplicação possui alguma dependência de pacotes de ferramentas de observabilidade?</h2>
-
+      <input type="text" class="inp" placeholder="Texto de resposta curta">
     </div>
   </div>
 
   <div class="container metrics" id="escalabilidade" style="display: none;">
     <div class="box">
       <h2>10. Caso a infraestrutura seja conteinerizada qual o máximo e mínimo de escalonamento de pods e nodes?</h2>
-
+      <input type="text" class="inp" placeholder="Texto de resposta curta">
     </div>
   </div>
 
   <div class="container metrics" id="metricas" style="display: none;">
     <div class="box">
       <h2>11. Quais métricas serão necessárias?</h2>
-
+      <button class="btn">CPU</button>
+      <button class="btn">Disco</button>
+      <button class="btn">Memória</button>
+      <button class="btn">Network</button>
+      <button class="btn">Data Base</button>
     </div>
   </div>
 
   <div class="container metrics" id="apm" style="display: none;">
     <div class="box">
-      <h2>12. Caso necessário. Quais métricas de APM serão utilizadas? Ex: Resource</h2>
+      <h2>Qual a quantidade de chamadas a aplicação recebe por dia? (valor médio)</h2>
+      <input type="text" class="inp" placeholder="Texto de resposta curta">
+    </div>
+  </div>
 
+  <div class="container metrics" id="apm" style="display: none;">
+    <div class="box">
+      <h2>. Caso necessário. Quais métricas de APM serão utilizadas? Ex: Resource</h2>
+      <input type="text" class="inp" placeholder="Texto de resposta curta">
     </div>
   </div>
 
   <div class="container metrics" id="auditoria" style="display: none;">
     <div class="box">
-      <h2>13. A aplicação exige auditoria 100% das métricas para validação? Ex: Métrica transacional Pix, precisa
-        devido a criticidade.</h2>
-
-    </div>
+      <h2>. A aplicação exige auditoria 100% das métricas para validação? Ex: Métrica transacional Pix, precisa devido a criticidade.</h2>
+        <button class="btn">Sim</button>
+        <button class="btn">Não</button>
+      </div>
   </div>
 
   <div class="container metrics" id="impacto" style="display: none;">
     <div class="box">
-      <h2>14. Qual o impacto da aplicação caso ela fique indisponível?</h2>
-
+      <h2>. Qual o impacto da aplicação caso ela fique indisponível?</h2>
+      <input type="text" class="inp" placeholder="Texto de resposta curta">
     </div>
   </div>
 
   <div class="container metrics" id="time" style="display: none;">
     <div class="box">
-      <h2>15. Informar qual o time responsável pela aplicação (conhecimento das regras de negócio) para
-        desenvolvimento dos objetos de monitoria (dashboard, alert e report)</h2>
-
+      <h2>. Informar qual o time responsável pela aplicação (conhecimento das regras de negócio) para desenvolvimento dos objetos monitoria (dashboard, alert e report)</h2>
+      <input type="text" class="inp" placeholder="Texto de resposta curta">
     </div>
   </div>
 
@@ -150,61 +160,80 @@
   <div class="container logs" style="display: none;">
     <div class="box">
       <h2>6. Nome do index (tudo minúsculo, com a separação feita com traços"-" | Ex: pier-logs)</h2>
+      <input type="text" class="inp" placeholder="Texto de resposta curta">
     </div>
   </div>
-
+  
   <div class="container logs" style="display: none;">
     <div class="box">
       <h2>7. Qual será o tempo de retenção?</h2>
+      <button class="btn">Padrão 90 dias</button>
+      <button class="btn">6 meses</button>
+      <button class="btn">1 ano</button>
+      <input type="text" class="inp" placeholder="Outros...">
     </div>
   </div>
-
+  
   <div class="container logs" style="display: none;">
     <div class="box">
       <h2>8. Os logs serão auditados?</h2>
+      <button class="btn">Sim</button>
+      <button class="btn">Não</button>
     </div>
   </div>
-
+  
   <div class="container logs" style="display: none;">
     <div class="box">
       <h2>9. Os logs são estruturados em Json?</h2>
+      <button class="btn">Sim</button>
+      <input type="text" class="inp" placeholder="Outros...">
     </div>
   </div>
-
+  
   <div class="container logs" style="display: none;">
     <div class="box">
       <h2>10. Qual a volumetria esperada para aplicação? (valor aproximado)</h2>
+      <button class="btn">1GB por mês</button>
+      <button class="btn">Até 100GB por mês</button>
+      <button class="btn">Até 1TB por mês</button>
+      <button class="btn">Superior a 1TB</button>
     </div>
   </div>
 
   <div class="container logs" style="display: none;">
     <div class="box">
       <h2>11. É esperado o crescimento progressivo da volumetria dos logs?</h2>
+      <button class="btn">Sim</button>
+      <button class="btn">Não</button>
     </div>
   </div>
 
   <div class="container logs" style="display: none;">
     <div class="box">
       <h2>12. Favor disponibilizar um log para análise dos parâmetros:</h2>
+      <input type="text" class="inp" placeholder="Outros...">
     </div>
   </div>
-
+  
   <div class="container logs" style="display: none;">
     <div class="box">
-      <h2>13. Cite quais os "parâmetros" que serão indexados e que serão utilizados para os objetos de monitoria (Ex:
-        issuer, motivoResposta, statusCode)</h2>
+      <h2>13. Cite quais os "parâmetros" que serão indexados e que serão utilizados para os objetos de monitoria (Ex: issuer, motivoResposta, statusCode)</h2>
+      <input type="text" class="inp" placeholder="Outros...">      
     </div>
   </div>
 
   <div class="container logs" style="display: none;">
     <div class="box">
       <h2>14. Qual o tipo de integração que será utilizada para coleta de log?</h2>
+      <button class="btn">Aplicação irá encaminhar via HTTP (Utilizando HTTP event collector) - Disponibilizado IP, porta e token</button>
+      <button class="btn">Instalação do agente na estrutura da aplicação - Disponibilizado documentação de instalação</button>
     </div>
   </div>
 
   <div class="container logs" style="display: none;">
     <div class="box">
       <h2>15. Caso a integração seja via agent, informar o caminho completo do diretório do log.</h2>
+      <input type="text" class="inp" placeholder="Outros...">
     </div>
   </div>
 
@@ -213,6 +242,8 @@
       <h2>16. Caso o envio seja via HTTP, é possível o "acknowledgement" na solução do envio? Confirmação do recebimento
         do evento por parte da ferramenta de observabilidade. (obs: aplicações que utilizam o kafka para o envio
         precisam da opção habilitada)</h2>
+      <button class="btn">Sim</button>
+      <button class="btn">Não</button>  
     </div>
   </div>
 
@@ -220,12 +251,15 @@
     <div class="box">
       <h2>17. As métricas de infraestrutura da aplicação estão sendo monitoradas? Favor informar qual aplicação está
         sendo utilizada.</h2>
+      <button class="btn">Não</button>  
+      <input type="text" class="inp" placeholder="Outros...">
     </div>
   </div>
 
   <div class="container logs" style="display: none;">
     <div class="box">
       <h2>18. Qual o impacto da aplicação caso ela fique indisponível?</h2>
+      <input type="text" class="inp" placeholder="Outros...">
     </div>
   </div>
 
@@ -233,6 +267,7 @@
     <div class="box">
       <h2>19. Informar qual o time responsável pela aplicação (conhecimento das regras de negócio) para desenvolvimento
         dos objetos de monitoria (dashboard, alert e report)</h2>
+      <input type="text" class="inp" placeholder="Outros...">
     </div>
   </div>
 </body>
