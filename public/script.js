@@ -1,25 +1,39 @@
-class Ferramenta {
-    constructor(nome, documentacao) {
-        this.nome = nome
-        this.documentacao = documentacao
+class Formulario {
+    constructor(email) {
+        this.email = email
+        this.documentacao = Array()
     }
 }
 
-const logs = [
+const matrics = [
     {
-        question: "Nome do index (tudo minúsculo, com a separação feita com traços"-" | Ex: pier-logs)",
+        question: "",
         answers: [
             {
+                answer: "",
                 type: ""
             }
+        ],
+    },
+]
+
+const logs = [
+    {
+        question: "Nome do index (tudo minúsculo, com a separação feita com traços '-' | Ex: pier-logs)",
+        answers: [
+            {
+                answer: "",
+                type: ""
+            },
         ],
     },
     {
         question: "Qual será o tempo de retenção?",
         answers: [
             {
+                answer: "",
                 type: ""
-            }
+            },
         ],
     },
     
@@ -93,10 +107,12 @@ const logs = [
         question: 'Caso o envio seja via HTTP, é possível o "acknowledgement" na solução do envio? Confirmação do recebimento do evento por parte da ferramenta de observabilidade. (obs: aplicações que utilizam o kafka para o envio precisam da opção habilitada)',
         answers: [
             {
-                answer: "Sim"
+                answer: "Sim",
+                type: "button"
             },
             {
-                a: "Não"
+                answer: "Não",
+                type: "button"
             }
         ]
     },
@@ -128,6 +144,7 @@ const logs = [
 ]
 
 // adicionar validação para emails dock.tech
+var validation = /^([a-z\d\.]+)@(dock\.tech)$/
 
 function devAmbient() {
     document.getElementById('sos').style.display = "flex"
