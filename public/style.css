@@ -47,7 +47,7 @@ body {
   padding: 32px;
 }
 
-.box h2 {
+.question {
   font-size: 25px;
   font-weight: 600;
   padding-bottom: 20px;
@@ -87,3 +87,18 @@ body {
   background-color: var(--amareloDock);
   color: #000;
 }
+
+.link a {
+  text-decoration: none;
+  color: var(--preto);
+  background-color: var(--amareloDock);
+  border-radius: 4px;
+  padding: 5px 10px;
+  transition: all 0.1s;
+}
+
+.link a:hover {
+  color: var(--amareloDock);
+  background-color: var(--preto);
+}
+
