@@ -265,14 +265,14 @@ const logs = [
         question: "Qual o tipo de integração que será utilizada para coleta de log?",
         answers: [
             {
-                
-                    text: "Aplicação irá encaminhar via HTTP (Utilizando HTTP event collector) - Disponibilizado IP, porta e token",
-                    type: "btn"
-                },
-                {
-                    text: "Instalação do agente na estrutura da aplicação - Disponibilizado documentação de instalação",
-                    type: "btn"
-                
+
+                text: "Aplicação irá encaminhar via HTTP (Utilizando HTTP event collector) - Disponibilizado IP, porta e token",
+                type: "btn"
+            },
+            {
+                text: "Instalação do agente na estrutura da aplicação - Disponibilizado documentação de instalação",
+                type: "btn"
+
             }
         ]
     },
@@ -341,7 +341,7 @@ function showMetricsQuestions() {
 
         var container = document.createElement("div")
         container.classList.add("container", "metrics")
-        
+
         var box = document.createElement("div")
         box.classList.add("box")
         container.appendChild(box)
@@ -377,7 +377,7 @@ function showLogsQuestions() {
 
         var container = document.createElement("div")
         container.classList.add("container", "logs")
-        
+
         var box = document.createElement("div")
         box.classList.add("box")
         container.appendChild(box)
@@ -409,11 +409,22 @@ function showLogsQuestions() {
 // validação para emails dock.tech
 var validation = /^([a-z\d\.]+)@(dock\.tech)$/
 
+function addSelectionListener(buttons) {
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            buttons.forEach(btn => btn.classList.remove('btn-selected'));
+            button.classList.add('btn-selected');
+        });
+    });
+}
+
+
 function devAmbient() {
     document.getElementById('sos').style.display = "flex"
 }
 
 function documentacao(acesso) {
+    addSelectionListener(document.getElementById('sos').children[0].children)
     if (acesso) {
         document.getElementById('pilarObs').style.display = "flex"
     } else {
@@ -424,14 +435,14 @@ function documentacao(acesso) {
 
 function removerLogs() {
     var logsArray = Array.from(document.getElementsByClassName('logs'))
-    logsArray.forEach(function(log) {
+    logsArray.forEach(function (log) {
         log.remove()
     })
 }
 
 function removerMetrics() {
     var metricsArray = Array.from(document.getElementsByClassName('metrics'))
-    metricsArray.forEach(function(metric) {
+    metricsArray.forEach(function (metric) {
         metric.remove()
     })
 }

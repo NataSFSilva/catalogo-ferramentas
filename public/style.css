@@ -88,6 +88,12 @@ body {
   color: #000;
 }
 
+.btn-selected {
+  background-color: var(--amareloDock);
+  color: #000;
+}
+
+
 .link a {
   text-decoration: none;
   color: var(--preto);
