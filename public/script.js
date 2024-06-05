@@ -333,6 +333,15 @@ const logs = [
     }
 ]
 
+function addSelectionListener(buttons) {
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            buttons.forEach(btn => btn.classList.remove('btn-selected'));
+            button.classList.add('btn-selected');
+        });
+    });
+}
+
 function showMetricsQuestions() {
     var qtdQuestoes = sessionStorage.getItem("questoes")
 
@@ -350,6 +359,8 @@ function showMetricsQuestions() {
         title.textContent = `${qtdQuestoes}. ${question.question}`
         box.appendChild(title)
 
+        var buttons = [];
+
         question.answers.forEach(answer => {
             var option
             if (answer.type == "inp") {
@@ -361,9 +372,12 @@ function showMetricsQuestions() {
                 option = document.createElement("button")
                 option.textContent = `${answer.text}`
                 option.setAttribute("class", answer.type)
+                buttons.push(option)
             }
             box.appendChild(option)
         });
+
+        addSelectionListener(buttons);
 
         document.body.appendChild(container)
     });
@@ -386,6 +400,8 @@ function showLogsQuestions() {
         title.textContent = `${qtdQuestoes}. ${question.question}`
         box.appendChild(title)
 
+        var buttons = [];
+
         question.answers.forEach(answer => {
             var option
             if (answer.type == "inp") {
@@ -397,9 +413,12 @@ function showLogsQuestions() {
                 option = document.createElement("button")
                 option.textContent = `${answer.text}`
                 option.setAttribute("class", answer.type)
+                buttons.push(option)
             }
             box.appendChild(option)
         });
+
+        addSelectionListener(buttons);
 
         document.body.appendChild(container)
     });
@@ -409,22 +428,29 @@ function showLogsQuestions() {
 // validação para emails dock.tech
 var validation = /^([a-z\d\.]+)@(dock\.tech)$/
 
-function addSelectionListener(buttons) {
-    buttons.forEach(button => {
-        button.addEventListener('click', function () {
-            buttons.forEach(btn => btn.classList.remove('btn-selected'));
-            button.classList.add('btn-selected');
-        });
-    });
-}
+document.addEventListener('DOMContentLoaded', (event) => {
+    var container = document.getElementById('sos');
+    var buttons = container.querySelectorAll('button');
+    addSelectionListener(buttons);
+});
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    var container = document.getElementById('ambient');
+    var buttons = container.querySelectorAll('button');
+    addSelectionListener(buttons);
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    var container = document.getElementById('pilarObs');
+    var buttons = container.querySelectorAll('button');
+    addSelectionListener(buttons);
+});
 
 function devAmbient() {
     document.getElementById('sos').style.display = "flex"
 }
 
 function documentacao(acesso) {
-    addSelectionListener(document.getElementById('sos').children[0].children)
     if (acesso) {
         document.getElementById('pilarObs').style.display = "flex"
     } else {
