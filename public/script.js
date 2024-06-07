@@ -265,14 +265,12 @@ const logs = [
         question: "Qual o tipo de integração que será utilizada para coleta de log?",
         answers: [
             {
-
                 text: "Aplicação irá encaminhar via HTTP (Utilizando HTTP event collector) - Disponibilizado IP, porta e token",
                 type: "btn"
             },
             {
                 text: "Instalação do agente na estrutura da aplicação - Disponibilizado documentação de instalação",
                 type: "btn"
-
             }
         ]
     },
@@ -290,11 +288,11 @@ const logs = [
         question: 'Caso o envio seja via HTTP, é possível o "acknowledgement" na solução do envio? Confirmação do recebimento do evento por parte da ferramenta de observabilidade. (obs: aplicações que utilizam o kafka para o envio precisam da opção habilitada)',
         answers: [
             {
-                answer: "Sim",
+                text: "Sim",
                 type: "btn"
             },
             {
-                answer: "Não",
+                text: "Não",
                 type: "btn"
             }
         ]
@@ -304,7 +302,7 @@ const logs = [
         question: "As métricas de infraestrutura da aplicação estão sendo monitoradas? Favor informar qual aplicação está sendo utilizada.",
         answers: [
             {
-                answer: "Não",
+                text: "Não",
                 type: "btn"
             },
             {
@@ -340,6 +338,14 @@ function addSelectionListener(buttons) {
             button.classList.add('btn-selected');
         });
     });
+}
+
+function handleButtonClick(event) {
+    console.log("Button clicked:", event.target.textContent);
+}
+
+function handleInputChange(event) {
+    console.log("Input changed:", event.target.value);
 }
 
 function showMetricsQuestions() {
@@ -409,10 +415,12 @@ function showLogsQuestions() {
                 option.type = "text"
                 option.className = answer.type
                 option.placeholder = answer.text
+                option.addEventListener('input', handleInputChange);
             } else {
                 option = document.createElement("button")
                 option.textContent = `${answer.text}`
                 option.setAttribute("class", answer.type)
+                option.addEventListener("click", handleButtonClick)
                 buttons.push(option)
             }
             box.appendChild(option)
@@ -422,28 +430,23 @@ function showLogsQuestions() {
 
         document.body.appendChild(container)
     });
-    // sessionStorage.setItem("questoes", qtdQuestoes)
 }
 
 // validação para emails dock.tech
 var validation = /^([a-z\d\.]+)@(dock\.tech)$/
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    var container = document.getElementById('sos');
-    var buttons = container.querySelectorAll('button');
-    addSelectionListener(buttons);
-});
+document.addEventListener('DOMContentLoaded', () => {
+    var ambient = document.getElementById('ambient');
+    var btnAmbient = ambient.querySelectorAll('button');
+    addSelectionListener(btnAmbient);
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    var container = document.getElementById('ambient');
-    var buttons = container.querySelectorAll('button');
-    addSelectionListener(buttons);
-});
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    var container = document.getElementById('pilarObs');
-    var buttons = container.querySelectorAll('button');
-    addSelectionListener(buttons);
+    var sos = document.getElementById('sos');
+    var btnSos = sos.querySelectorAll('button');
+    addSelectionListener(btnSos);
+    
+    var pilar = document.getElementById('pilarObs');
+    var btnPilar = pilar.querySelectorAll('button');
+    addSelectionListener(btnPilar);
 });
 
 function devAmbient() {
@@ -453,6 +456,7 @@ function devAmbient() {
 function documentacao(acesso) {
     if (acesso) {
         document.getElementById('pilarObs').style.display = "flex"
+        document.getElementById('acesso').style.display = "none"
     } else {
         document.getElementById('acesso').style.display = "flex"
         document.getElementById('pilarObs').style.display = "flex"
@@ -477,11 +481,15 @@ function caminhoPilar(pilar) {
     loadQuestions(5)
     if (pilar == "metrics") {
         removerLogs()
+        document.getElementById('tracesDoc').style.display = "none"
         showMetricsQuestions()
     } else if (pilar == "logs") {
         removerMetrics()
+        document.getElementById('tracesDoc').style.display = "none"
         showLogsQuestions()
     } else if (pilar == "traces") {
+        removerLogs()
+        removerMetrics()
         document.getElementById('tracesDoc').style.display = "flex"
     }
 }
