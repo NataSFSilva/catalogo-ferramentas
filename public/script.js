@@ -5,6 +5,13 @@ class Formulario {
     }
 }
 
+class Resposta {
+    constructor(question, answer) {
+        this.question = question,
+        this.answer = answer
+    }
+}
+
 function loadQuestions(qtdQuestoes) {
     sessionStorage.setItem("questoes", qtdQuestoes)
 }
@@ -436,6 +443,14 @@ function showLogsQuestions() {
 var validation = /^([a-z\d\.]+)@(dock\.tech)$/
 
 document.addEventListener('DOMContentLoaded', () => {
+    var email = document.getElementById('email');
+    var inpEmail = email.querySelector('input');
+    inpEmail.addEventListener('input', handleInputChange);
+
+    var name = document.getElementById('apiName');
+    var inpName = name.querySelector('input');
+    inpName.addEventListener('input', handleInputChange);
+
     var ambient = document.getElementById('ambient');
     var btnAmbient = ambient.querySelectorAll('button');
     addSelectionListener(btnAmbient);
@@ -455,41 +470,41 @@ function devAmbient() {
 
 function documentacao(acesso) {
     if (acesso) {
-        document.getElementById('pilarObs').style.display = "flex"
-        document.getElementById('acesso').style.display = "none"
+        document.getElementById('pilarObs').style.display = "flex";
+        document.getElementById('acesso').style.display = "none";
     } else {
-        document.getElementById('acesso').style.display = "flex"
-        document.getElementById('pilarObs').style.display = "flex"
+        document.getElementById('acesso').style.display = "flex";
+        document.getElementById('pilarObs').style.display = "flex";
     }
 }
 
 function removerLogs() {
-    var logsArray = Array.from(document.getElementsByClassName('logs'))
+    var logsArray = Array.from(document.getElementsByClassName('logs'));
     logsArray.forEach(function (log) {
-        log.remove()
+        log.remove();
     })
 }
 
 function removerMetrics() {
-    var metricsArray = Array.from(document.getElementsByClassName('metrics'))
+    var metricsArray = Array.from(document.getElementsByClassName('metrics'));
     metricsArray.forEach(function (metric) {
-        metric.remove()
+        metric.remove();
     })
 }
 
 function caminhoPilar(pilar) {
     loadQuestions(5)
     if (pilar == "metrics") {
-        removerLogs()
-        document.getElementById('tracesDoc').style.display = "none"
-        showMetricsQuestions()
+        removerLogs();
+        document.getElementById('tracesDoc').style.display = "none";
+        showMetricsQuestions();
     } else if (pilar == "logs") {
-        removerMetrics()
-        document.getElementById('tracesDoc').style.display = "none"
-        showLogsQuestions()
+        removerMetrics();
+        document.getElementById('tracesDoc').style.display = "none";
+        showLogsQuestions();
     } else if (pilar == "traces") {
-        removerLogs()
-        removerMetrics()
-        document.getElementById('tracesDoc').style.display = "flex"
+        removerLogs();
+        removerMetrics();
+        document.getElementById('tracesDoc').style.display = "flex";
     }
 }
