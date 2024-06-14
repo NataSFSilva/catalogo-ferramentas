@@ -109,3 +109,39 @@ body {
   background-color: var(--preto);
 }
 
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox .checkmark {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--preto);
+  border: 2px solid var(--amareloDock);
+  cursor: pointer;
+}
+
+.custom-checkbox .checkmark:hover {
+  background-color: var(--amareloDock);
+  border: 2px solid var(--preto);
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid var(--amareloDock);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::after:hover {
+  border: solid var(--preto);
+  border-width: 0 2px 2px 0;
+  background-color: var(--preto);
+}
