@@ -1,16 +1,34 @@
 class Formulario {
-    constructor(email) {
+    constructor() {
+        this.email = ""
+        this.documentacao = []
+    }
+
+    addEmail(email) {
         this.email = email
-        this.documentacao = Array()
+    }
+
+    addQuestion(respostaObj) {
+        this.documentacao.push(respostaObj)
+    }
+
+    addResposta(index, evento) {
+        this.documentacao[index].answer = evento
     }
 }
 
 class Resposta {
-    constructor(question, answer) {
-        this.question = question,
+    constructor(question) {
+        this.question = question
+        this.answer = ""
+    }
+
+    addAnswer (answer) {
         this.answer = answer
     }
 }
+
+const form = new Formulario()
 
 function loadQuestions(qtdQuestoes) {
     sessionStorage.setItem("questoes", qtdQuestoes)
@@ -351,8 +369,13 @@ function handleButtonClick(event) {
     console.log("Button clicked:", event.target.textContent);
 }
 
-function handleInputChange(event) {
-    console.log("Input changed:", event.target.value);
+function handleInputChange(event, index) {
+    var evento = event.target.value
+    console.log("Input changed:", evento);
+    console.log("Vetor index:", index);
+
+    form.addResposta(index, evento)
+    console.log(form)
 }
 
 function showMetricsQuestions() {
@@ -445,24 +468,29 @@ var validation = /^([a-z\d\.]+)@(dock\.tech)$/
 document.addEventListener('DOMContentLoaded', () => {
     var email = document.getElementById('email');
     var inpEmail = email.querySelector('input');
-    inpEmail.addEventListener('input', handleInputChange);
-
+    inpEmail.addEventListener('input', (event) => handleInputChange(event, 0));
+    form.addQuestion(new Resposta(email.querySelector('h2').innerText));
+    
     var name = document.getElementById('apiName');
     var inpName = name.querySelector('input');
-    inpName.addEventListener('input', handleInputChange);
-
+    inpName.addEventListener('input', (event) => handleInputChange(event, 1));
+    form.addQuestion(new Resposta(name.querySelector('h2').innerText));
+    
     var ambient = document.getElementById('ambient');
     var btnAmbient = ambient.querySelectorAll('button');
     addSelectionListener(btnAmbient);
-
+    form.addQuestion(new Resposta(ambient.querySelector('h2').innerText));
+    
     var sos = document.getElementById('sos');
     var btnSos = sos.querySelectorAll('button');
     addSelectionListener(btnSos);
+    form.addQuestion(new Resposta(sos.querySelector('h2').innerText));
     
     var pilar = document.getElementById('pilarObs');
     var btnPilar = pilar.querySelectorAll('button');
     addSelectionListener(btnPilar);
-});
+    form.addQuestion(new Resposta(pilar.querySelector('h2').innerText));
+    });
 
 function devAmbient() {
     document.getElementById('sos').style.display = "flex"
