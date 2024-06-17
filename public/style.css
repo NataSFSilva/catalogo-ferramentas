@@ -58,7 +58,7 @@ body {
   border-left: none;
   border-right: none;
   border-color: var(--azulDock);
-  background-color: #EEFF88;
+  background-color: var(--amareloDock);
   width: 95%;
   height: 24px;
   padding: 0px 10px;
@@ -94,19 +94,22 @@ body {
   color: #000;
 }
 
-
-.link a {
-  text-decoration: none;
-  color: var(--preto);
-  background-color: var(--amareloDock);
+.btnCheck {
+  background: #000;
+  color: var(--amareloDock);
+  font-weight: 600;
+  width: 99.8%;
+  border: 1px solid var(--amareloDock);
+  margin: 10px 0;
+  text-align: left;
   border-radius: 4px;
-  padding: 5px 10px;
-  transition: all 0.1s;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-.link a:hover {
-  color: var(--amareloDock);
-  background-color: var(--preto);
+.btnCheck:hover {
+  background-color: var(--amareloDock);
+  color: #000;
 }
 
 .custom-checkbox input[type="checkbox"] {
@@ -116,6 +119,7 @@ body {
 .custom-checkbox .checkmark {
   position: relative;
   display: inline-block;
+  margin: 10px 10px;
   width: 20px;
   height: 20px;
   background-color: var(--preto);
@@ -143,5 +147,19 @@ body {
 .custom-checkbox input[type="checkbox"]:checked + .checkmark::after:hover {
   border: solid var(--preto);
   border-width: 0 2px 2px 0;
+  background-color: var(--preto);
+}
+
+.link a {
+  text-decoration: none;
+  color: var(--preto);
+  background-color: var(--amareloDock);
+  border-radius: 4px;
+  padding: 5px 10px;
+  transition: all 0.1s;
+}
+
+.link a:hover {
+  color: var(--amareloDock);
   background-color: var(--preto);
 }

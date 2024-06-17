@@ -490,7 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var btnPilar = pilar.querySelectorAll('button');
     addSelectionListener(btnPilar);
     form.addQuestion(new Resposta(pilar.querySelector('h2').innerText));
-    });
+});
 
 function devAmbient() {
     document.getElementById('sos').style.display = "flex"
