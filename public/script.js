@@ -12,15 +12,16 @@ class Formulario {
         this.documentacao.push(respostaObj)
     }
 
-    addResposta(index, evento) {
-        this.documentacao[index].answer = evento
+    addResposta(index, answerText) {
+        this.documentacao[index].addAnswer(answerText)
     }
 }
 
 class Resposta {
-    constructor(question) {
+    constructor(question, index) {
         this.question = question
         this.answer = ""
+        this.index = index
     }
 
     addAnswer (answer) {
@@ -229,7 +230,6 @@ const logs = [
             }
         ]
     },
-
     {
         question: "Qual a volumetria esperada para aplicação? (valor aproximado)",
         answers: [
@@ -365,8 +365,30 @@ function addSelectionListener(buttons) {
     });
 }
 
-function handleButtonClick(event) {
+// Apenas uma ideia
+function addSelectionListenerCheck(buttons, checkboxDiv) {
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            buttons.forEach(btn => btn.classList.remove('btn-selected'));
+            button.classList.add('btn-selected');
+            // Desmarca a checkbox e limpa o input
+            checkboxDiv.querySelector('input[type="checkbox"]').checked = false;
+            checkboxDiv.querySelector('input[type="text"]').value = "";
+        });
+    });
+    checkboxDiv.addEventListener('click', function () {
+        // Desmarca os botões
+        buttons.forEach(btn => btn.classList.remove('btn-selected'));
+        // Coloca o foco na input
+        checkboxDiv.querySelector('input[type="checkbox"]').checked = true;
+        checkboxDiv.querySelector('input[type="text"]').focus();
+    });
+}
+
+function handleButtonClick(index, event) {
     console.log("Button clicked:", event.target.textContent);
+
+    form.addResposta(index, event.target.textContent)
 }
 
 function handleInputChange(event, index) {
@@ -375,7 +397,6 @@ function handleInputChange(event, index) {
     console.log("Vetor index:", index);
 
     form.addResposta(index, evento)
-    console.log(form)
 }
 
 function showMetricsQuestions() {
@@ -450,7 +471,7 @@ function showLogsQuestions() {
                 option = document.createElement("button")
                 option.textContent = `${answer.text}`
                 option.setAttribute("class", answer.type)
-                option.addEventListener("click", handleButtonClick)
+                option.addEventListener("click", (event) => handleButtonClick(event, 1))
                 buttons.push(option)
             }
             box.appendChild(option)
@@ -469,27 +490,31 @@ document.addEventListener('DOMContentLoaded', () => {
     var email = document.getElementById('email');
     var inpEmail = email.querySelector('input');
     inpEmail.addEventListener('input', (event) => handleInputChange(event, 0));
-    form.addQuestion(new Resposta(email.querySelector('h2').innerText));
+    form.addQuestion(new Resposta(email.querySelector('h2').innerText, 0));
     
     var name = document.getElementById('apiName');
     var inpName = name.querySelector('input');
     inpName.addEventListener('input', (event) => handleInputChange(event, 1));
-    form.addQuestion(new Resposta(name.querySelector('h2').innerText));
+    form.addQuestion(new Resposta(name.querySelector('h2').innerText, 1));
     
     var ambient = document.getElementById('ambient');
     var btnAmbient = ambient.querySelectorAll('button');
+    // var btnCheck = ambient.querySelector('.btnCheck');
+    // addSelectionListenerCheck(btnAmbient, btnCheck);
     addSelectionListener(btnAmbient);
-    form.addQuestion(new Resposta(ambient.querySelector('h2').innerText));
+    form.addQuestion(new Resposta(ambient.querySelector('h2').innerText, 2));
+    // var inpCheck = btnCheck.querySelector('input[type="text"]');
+    // inpCheck.addEventListener('input', (event) => handleInputChange(event, 2));
     
     var sos = document.getElementById('sos');
     var btnSos = sos.querySelectorAll('button');
     addSelectionListener(btnSos);
-    form.addQuestion(new Resposta(sos.querySelector('h2').innerText));
+    form.addQuestion(new Resposta(sos.querySelector('h2').innerText, 3));
     
     var pilar = document.getElementById('pilarObs');
     var btnPilar = pilar.querySelectorAll('button');
     addSelectionListener(btnPilar);
-    form.addQuestion(new Resposta(pilar.querySelector('h2').innerText));
+    form.addQuestion(new Resposta(pilar.querySelector('h2').innerText, 4));
 });
 
 function devAmbient() {

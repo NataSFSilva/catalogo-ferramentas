@@ -1,0 +1,95 @@
+LOG - SPLUNK
+Abertura da solicitação de onboarding a Observability
+
+Recebimento do formulário para preenchimento do solicitante e entrega de documentações iniciais 
+
+======================================================================================================================================
+
+Filtragem:
+
+Informe seu e-mail
+
+Nome da Aplicação
+
+Qual ambiente será monitorado: 
+-Prod = Splunk, Grafana e DataDog
+-Hml = Grafana, Splunk e DataDog
+-Dev = SOS
+
+Qual o pilar da observabilidade constitui a aplicação?
+-Log = Splunk e SOS
+-Métricas = Grafana, DataDog e SOS
+-Traces = Grafana, DataDog e SOS
+
+Qual o grau de complexidade da aplicação?
+-Alta relacionada ao Core da empresa e ambientes críticos= Splunk e DataDog
+-Média com possibilidades de risco relacionada a falta de funcionamento = Grafana,  Splunk, DataDog 
+-Baixa sem apresentar riscos expressivos, porém com necessidade de observabilidade = Splunk, Grafana e SOS
+
+
+=======================================================================================================================================
+
+Onboarding logs Splunk 
+
+Possui acesso ao Splunk
+-Sim
+-Não 
+//R:Não (https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3167453528/Splunk+OPS)
+
+Nome do index (tudo minúsculo, com a separação feita com traços "-" | Ex: pier-logs)
+
+Qual será o tempo de retenção?
+-Padrão 90 dias
+-6 meses
+-1 ano
+
+Os logs serão auditados?
+-Sim
+-Não
+
+Os logs são estruturados em Json?
+-Sim
+-outros
+
+Qual a volumetria esperada para aplicação? (valor aproximado)
+-1 Gb por mês
+-Até 100gb por mês
+-Até 1Tb por mês
+-Superior a 1Tb
+
+É esperado o crescimento progressivo da volumetria dos logs?
+-Sim
+-Não
+
+Favor disponibilizar um log para análise dos parâmetros:
+
+Cite quais os "parâmetros" que serão indexados e que serão utilizados para os objetos de monitoria
+(Ex: issuer, motivoResposta, statusCode)
+
+Qual o tipo de integração que será utilizada para coleta de log?
+-Aplicação irá encaminhar via HTTP (Utilizando HTTP event collector) - Disponibilizado Ip, porta e token
+-Instalação do agente na estrutura da aplicação - Disponibilizado documentação de instalação
+//R:Instalação do agente na estrutura da aplicação - Disponibilizado documentação de instalação
+https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3196879557/Windows+Logs+with+Splunk
+https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3196879571/Linux+Logs+with+Splunk
+
+Caso a integração seja via agent, informar o caminho completo do diretório do log.
+//vínculo com a resposta da anterior, visualização apenas na resposta "Instalação do agente na estrutura da aplicação - Disponibilizado documentação de instalação"
+
+Caso o envio seja via HTTP, é possível o "acknowledgement" na solução do envio?
+Confirmação do recebimento do evento por parte da ferramenta de observabilidade. (obs: aplicações que utilizam o kafka para o envio precisam da opção habilitada)
+-Sim
+-Não
+//vínculo com a resposta da anterior, visualização apenas na resposta "Aplicação irá encaminhar via HTTP (Utilizando HTTP event collector) - Disponibilizado Ip, porta e token"
+
+As métricas de infraestrutura da aplicação estão sendo monitoradas? Favor informar qual aplicação está sendo utilizada.
+-Não
+-outros
+
+Qual o impacto da aplicação caso ela fique indisponível?
+
+Informar qual o time responsável pela aplicação (conhecimento das regras de negócio) para desenvolvimento dos objetos de monitoria (dashboard, alert e report)
+
+=======================================================================================================================================
+
+Inicio do processo de onboarding pelo time de observability a partir do retorno do formulário

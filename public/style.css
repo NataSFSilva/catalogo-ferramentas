@@ -95,6 +95,8 @@ body {
 }
 
 .btnCheck {
+  display: flex;
+  align-items: center;
   background: #000;
   color: var(--amareloDock);
   font-weight: 600;
@@ -127,12 +129,12 @@ body {
   cursor: pointer;
 }
 
-.custom-checkbox .checkmark:hover {
+.custom-checkbox:hover .checkmark {
   background-color: var(--amareloDock);
   border: 2px solid var(--preto);
 }
 
-.custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+.custom-checkbox input[type="checkbox"]:checked+.checkmark::after {
   content: "";
   position: absolute;
   left: 6px;
@@ -144,9 +146,20 @@ body {
   transform: rotate(45deg);
 }
 
-.custom-checkbox input[type="checkbox"]:checked + .checkmark::after:hover {
+.custom-checkbox input[type="checkbox"]:checked+.checkmark::after:hover {
   border: solid var(--preto);
   border-width: 0 2px 2px 0;
+  background-color: var(--preto);
+}
+
+.inpCheck {
+  width: 100%;
+  height: 20px;
+  margin: 0 10px 5px 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: var(--amareloDock);
   background-color: var(--preto);
 }
 
