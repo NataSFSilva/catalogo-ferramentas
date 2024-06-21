@@ -1,0 +1,67 @@
+======================================================================================================================================
+
+Filtragem:
+
+Informe seu e-mail
+
+Nome da Aplicação
+
+Qual ambiente será monitorado:
+-Prod = Splunk, Grafana e DataDog
+-Hml = Grafana, Splunk e DataDog
+-Dev = SOS
+
+Qual o pilar da observabilidade constitui a aplicação?
+-Log = Splunk e SOS
+-Métricas = Grafana, DataDog e SOS
+-Traces = Grafana, DataDog e SOS
+
+Qual o grau de complexidade da aplicação?
+-Alta relacionada ao Core da empresa e ambientes críticos= Splunk e DataDog
+-Média com possibilidades de risco relacionada a falta de funcionamento = Grafana,  Splunk, DataDog
+-Baixa sem apresentar riscos expressivos, porém com necessidade de observabilidade = Splunk, Grafana e SOS
+
+
+=======================================================================================================================================
+
+Onboarding logs DataDog
+
+Possui acesso ao DataDog
+-Sim
+-Não
+//R:Não (https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3170402376/DataDog+-+User)
+
+Qual provedor a aplicação utiliza?
+-AWS
+-GCP
+-Azure
+
+Tecnologia utilizada? (Java, GO, Python, php, etc.)
+
+
+Qual infraestrutura a aplicação utiliza?
+Ex: Kubernetes, Docker, VirtualMachine, Lambda...
+-Kubernetes
+//R:https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3196879885/K8S+Observability+with+Datadog
+-VirtualMachine
+//R:https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3654779005/Observability+Collector
+-Lambda
+//R:https://docs.datadoghq.com/logs/guide/forwarder/?tab=cloudformation
+outros
+
+Caso a infraestrutura seja conteinerizada qual o máximo e mínimo de escalonamento de pods e nodes?
+
+Caso necessário. Quais métricas de APM serão utilizadas?
+Ex: Resource
+
+Qual a quantidade de chamadas a aplicação recebe por dia?
+(valor médio)
+
+A aplicação exige auditoria 100% das métricas para validação?
+Ex: Métrica transacional Pix, precisa devido a criticidade.
+-Sim
+-Não
+
+Qual o impacto da aplicação caso ela fique indisponível?
+
+Informar qual o time responsável pela aplicação (conhecimento das regras de negócio) para desenvolvimento dos objetos de monitoria (dashboard, alert e report)

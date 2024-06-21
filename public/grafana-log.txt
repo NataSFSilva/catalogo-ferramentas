@@ -1,0 +1,53 @@
+=======================================================================================================================================
+
+Onboarding logs Grafana
+
+Possui acesso ao Grafana
+-Sim
+-Não 
+//R:Não (https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3302981944/Grafana+PRD)
+
+Qual provedor a aplicação utiliza? 
+-AWS
+-GCP
+-Azure
+
+Tecnologia utilizada? (Java, GO, Python, php, etc.)
+-Java
+//R:https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3207267179/Java+M+tricas+-+Prometheus
+-Go
+//R:https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3196879283/GO+M+tricas+-+Prometheus
+-Python
+//R:https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3196879315/Python+Flask+API+M+tricas+-+Prometheus
+outros
+
+
+Qual infraestrutura a aplicação utiliza? 
+Ex: Kubernetes, Docker, VirtualMachine, Lambda...
+-Docker
+//R:https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3196879014/ECS+Metrics+with+Prometheus
+-Kubernetes 
+//R:https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3196879225/K8S+Observability+with+Grafana
+-VirtualMachine
+//R:https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3196879225/K8S+Observability+with+Grafana 
+//R:https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3196879247/Windows+Metrics+with+Grafana
+-Lambda
+//R:https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3658580136/Observability+from+Lambda+Functions
+outros
+
+Caso a infraestrutura seja conteinerizada qual o máximo e mínimo de escalonamento de pods e nodes? 
+
+Caso necessário. Quais métricas de APM serão utilizadas?
+Ex: Resource
+
+Qual a quantidade de chamadas a aplicação recebe por dia? 
+(valor médio)
+
+A aplicação exige auditoria 100% das métricas para validação?
+Ex: Métrica transacional Pix, precisa devido a criticidade.
+-Sim
+-Não
+
+Qual o impacto da aplicação caso ela fique indisponível?
+
+Informar qual o time responsável pela aplicação (conhecimento das regras de negócio) para desenvolvimento dos objetos de monitoria (dashboard, alert e report)

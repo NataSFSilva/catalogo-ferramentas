@@ -171,6 +171,21 @@ const metrics = [
 
 const logs = [
     {
+        question: "Possui acesso ao Splunk?",
+        answers: [
+            {
+                text: "Sim",
+                type: "btn",
+                showDoc: true
+            },
+            {
+                text: "Não",
+                type: "btn",
+                showDoc: true
+            }
+        ]
+    },
+    {
         question: "Nome do index (tudo minúsculo, com a separação feita com traços '-' | Ex: pier-logs)",
         answers: [
             {
@@ -287,43 +302,6 @@ const logs = [
         ]
     },
     {
-        question: "Qual o tipo de integração que será utilizada para coleta de log?",
-        answers: [
-            {
-                text: "Aplicação irá encaminhar via HTTP (Utilizando HTTP event collector) - Disponibilizado IP, porta e token",
-                type: "btn"
-            },
-            {
-                text: "Instalação do agente na estrutura da aplicação - Disponibilizado documentação de instalação",
-                type: "btn"
-            }
-        ]
-    },
-
-    {
-        question: "Caso a integração seja via agent, informar o caminho completo do diretório do log.",
-        answers: [
-            {
-                text: "Outros...",
-                type: "inp"
-            }
-        ]
-    },
-    {
-        question: 'Caso o envio seja via HTTP, é possível o "acknowledgement" na solução do envio? Confirmação do recebimento do evento por parte da ferramenta de observabilidade. (obs: aplicações que utilizam o kafka para o envio precisam da opção habilitada)',
-        answers: [
-            {
-                text: "Sim",
-                type: "btn"
-            },
-            {
-                text: "Não",
-                type: "btn"
-            }
-        ]
-    },
-
-    {
         question: "As métricas de infraestrutura da aplicação estão sendo monitoradas? Favor informar qual aplicação está sendo utilizada.",
         answers: [
             {
@@ -353,19 +331,76 @@ const logs = [
                 type: "inp"
             }
         ]
+    },
+    {
+        question: "Qual o tipo de integração que será utilizada para coleta de log?",
+        answers: [
+            {
+                text: "Aplicação irá encaminhar via HTTP (Utilizando HTTP event collector) - Disponibilizado IP, porta e token",
+                type: "btn"
+            },
+            {
+                text: "Instalação do agente na estrutura da aplicação - Disponibilizado documentação de instalação",
+                type: "btn"
+            }
+        ]
     }
 ]
 
-function addSelectionListener(buttons) {
+const conditionalElements = {
+    splunkDoc: {
+        text: "Documentação de acesso ao Splunk",
+        url: "https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3167453528/Splunk+OPS"
+    },
+    agent: {
+        question: "Caso a integração seja via agent, informar o caminho completo do diretório do log.",
+        answers: [
+            {
+                text: "Outros...",
+                type: "inp"
+            }
+        ]
+    },
+    http: {
+        question: 'Caso o envio seja via HTTP, é possível o "acknowledgement" na solução do envio? Confirmação do recebimento do evento por parte da ferramenta de observabilidade. (obs: aplicações que utilizam o kafka para o envio precisam da opção habilitada)',
+        answers: [
+            {
+                text: "Sim",
+                type: "btn"
+            },
+            {
+                text: "Não",
+                type: "btn"
+            }
+        ]
+    }
+}
+
+function handleButtonClick(event, index) {
+    console.log("Button clicked:", event.target.textContent);
+
+    form.addResposta(index, event.target.textContent)
+}
+
+function handleInputChange(event, index) {
+    var evento = event.target.textContent
+    console.log("Input changed:", evento);
+    console.log("Vetor index:", index);
+
+    form.addResposta(index, evento)
+}
+
+function addSelectionListener(buttons, index) {
     buttons.forEach(button => {
-        button.addEventListener('click', function () {
+        button.addEventListener('click', (event) => {
+            console.log(event.target.textContent)
+            handleButtonClick(event, index)
             buttons.forEach(btn => btn.classList.remove('btn-selected'));
             button.classList.add('btn-selected');
         });
     });
 }
 
-// Apenas uma ideia
 function addSelectionListenerCheck(buttons, checkboxDiv) {
     buttons.forEach(button => {
         button.addEventListener('click', function () {
@@ -383,20 +418,6 @@ function addSelectionListenerCheck(buttons, checkboxDiv) {
         checkboxDiv.querySelector('input[type="checkbox"]').checked = true;
         checkboxDiv.querySelector('input[type="text"]').focus();
     });
-}
-
-function handleButtonClick(index, event) {
-    console.log("Button clicked:", event.target.textContent);
-
-    form.addResposta(index, event.target.textContent)
-}
-
-function handleInputChange(event, index) {
-    var evento = event.target.value
-    console.log("Input changed:", evento);
-    console.log("Vetor index:", index);
-
-    form.addResposta(index, evento)
 }
 
 function showMetricsQuestions() {
@@ -442,9 +463,11 @@ function showMetricsQuestions() {
 
 function showLogsQuestions() {
     var qtdQuestoes = sessionStorage.getItem("questoes")
+    var lastindex = form.documentacao.length - 1
     logs.forEach(question => {
         qtdQuestoes++
         // console.log("qtd de questoes logs: " + qtdQuestoes)
+        console.log("Posição da ultima questão: " + lastindex)
 
         var container = document.createElement("div")
         container.classList.add("container", "logs")
@@ -466,12 +489,12 @@ function showLogsQuestions() {
                 option.type = "text"
                 option.className = answer.type
                 option.placeholder = answer.text
-                option.addEventListener('input', handleInputChange);
+                option.addEventListener('input', (event) => handleInputChange(event, lastindex));
             } else {
                 option = document.createElement("button")
                 option.textContent = `${answer.text}`
                 option.setAttribute("class", answer.type)
-                option.addEventListener("click", (event) => handleButtonClick(event, 1))
+                option.addEventListener("click", (event) => handleButtonClick(event, lastindex))
                 buttons.push(option)
             }
             box.appendChild(option)
@@ -501,19 +524,19 @@ document.addEventListener('DOMContentLoaded', () => {
     var btnAmbient = ambient.querySelectorAll('button');
     // var btnCheck = ambient.querySelector('.btnCheck');
     // addSelectionListenerCheck(btnAmbient, btnCheck);
-    addSelectionListener(btnAmbient);
+    addSelectionListener(btnAmbient, 2);
     form.addQuestion(new Resposta(ambient.querySelector('h2').innerText, 2));
     // var inpCheck = btnCheck.querySelector('input[type="text"]');
     // inpCheck.addEventListener('input', (event) => handleInputChange(event, 2));
     
     var sos = document.getElementById('sos');
     var btnSos = sos.querySelectorAll('button');
-    addSelectionListener(btnSos);
+    addSelectionListener(btnSos, 3);
     form.addQuestion(new Resposta(sos.querySelector('h2').innerText, 3));
     
     var pilar = document.getElementById('pilarObs');
     var btnPilar = pilar.querySelectorAll('button');
-    addSelectionListener(btnPilar);
+    addSelectionListener(btnPilar, 4);
     form.addQuestion(new Resposta(pilar.querySelector('h2').innerText, 4));
 });
 
@@ -560,4 +583,8 @@ function caminhoPilar(pilar) {
         removerMetrics();
         document.getElementById('tracesDoc').style.display = "flex";
     }
+}
+
+function extraElements(id, remove) {
+    
 }

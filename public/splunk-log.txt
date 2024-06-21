@@ -66,6 +66,14 @@ Favor disponibilizar um log para análise dos parâmetros:
 Cite quais os "parâmetros" que serão indexados e que serão utilizados para os objetos de monitoria
 (Ex: issuer, motivoResposta, statusCode)
 
+As métricas de infraestrutura da aplicação estão sendo monitoradas? Favor informar qual aplicação está sendo utilizada.
+-Não
+-outros
+
+Qual o impacto da aplicação caso ela fique indisponível?
+
+Informar qual o time responsável pela aplicação (conhecimento das regras de negócio) para desenvolvimento dos objetos de monitoria (dashboard, alert e report)
+
 Qual o tipo de integração que será utilizada para coleta de log?
 -Aplicação irá encaminhar via HTTP (Utilizando HTTP event collector) - Disponibilizado Ip, porta e token
 -Instalação do agente na estrutura da aplicação - Disponibilizado documentação de instalação
@@ -81,14 +89,6 @@ Confirmação do recebimento do evento por parte da ferramenta de observabilidad
 -Sim
 -Não
 //vínculo com a resposta da anterior, visualização apenas na resposta "Aplicação irá encaminhar via HTTP (Utilizando HTTP event collector) - Disponibilizado Ip, porta e token"
-
-As métricas de infraestrutura da aplicação estão sendo monitoradas? Favor informar qual aplicação está sendo utilizada.
--Não
--outros
-
-Qual o impacto da aplicação caso ela fique indisponível?
-
-Informar qual o time responsável pela aplicação (conhecimento das regras de negócio) para desenvolvimento dos objetos de monitoria (dashboard, alert e report)
 
 =======================================================================================================================================
 
