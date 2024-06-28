@@ -34,38 +34,21 @@
     <div class="container" id="ambient">
       <div class="box">
         <h2 class="question">3. Qual ambiente será monitorado?</h2>
-        <button class="btn" onclick="devAmbient()">Dev</button>
-        <button class="btn">Hml</button>
-        <button class="btn">Prod</button>
-        <div class="btnCheck">  
-          <label class="custom-checkbox">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-          </label>
-          <input type="text" class="inpCheck" placeholder="">
-        </div>
+        <button class="btn" onclick="selectAmbient('dev')">Dev</button>
+        <button class="btn" onclick="selectAmbient('hml')">Hml</button>
+        <button class="btn" onclick="selectAmbient('prod')">Prod</button>
       </div>
     </div>
 
-    <div class="container" id="sos" style="display: none;">
+    <div class="container" id="">
       <div class="box">
-        <h2 class="question">4. Você tem acesso a ferramenta SOS?</h2>
-        <button class="btn" onclick="documentacao(true)">Sim</button>
-        <button class="btn" onclick="documentacao(false)">Não</button>
+        <h2 class="question">4. Qual o grau de complexidade da aplicação?</h2>
+        <button class="btn" onclick="selectComplexidade(3)">Alta relacionada ao Core da empresa e ambientes críticos = Splunk e DataDog</button>
+        <button class="btn" onclick="selectComplexidade(2)">Média com possibilidades de risco relacionada a falta de funcionamento = Grafana,  Splunk, DataDog</button>
+        <button class="btn" onclick="selectComplexidade(1)">Baixa sem apresentar riscos expressivos, porém com necessidade de observabilidade = Splunk, Grafana e SOS</button>
       </div>
     </div>
-
-    <div class="container" id="acesso" style="display: none;">
-      <div class="box">
-        <h2 class="link">
-          <a href="https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3178267886/Grafana+Dev" target="_blank"
-            rel="noopener noreferrer">
-            Orientação de acesso no Confluence
-          </a>
-        </h2>
-      </div>
-    </div>
-
+    
     <div class="container" id="pilarObs" style="display: none;">
       <div class="box">
         <h2 class="question">5. Qual o pilar da observabilidade constitui a aplicação?</h2>
@@ -74,32 +57,40 @@
         <button class="btn" onclick="caminhoPilar('traces')">Traces</button>
       </div>
     </div>
-    
-    <div class="container" id="complexidade" style="display: none;">
-      <div class="box">
-        <h2 class="question">6. Qual o pilar da observabilidade constitui a aplicação?</h2>
-        <button class="btn" onclick="caminhoPilar('metrics')">Metricas</button>
-        <button class="btn" onclick="caminhoPilar('logs')">Logs</button>
-        <button class="btn" onclick="caminhoPilar('traces')">Traces</button>
-      </div>
-    </div>
 
-    <div class="container" id="tracesDoc" style="display: none;">
-      <div class="box">
-        <h2 class="link">
-          <a href="https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3178267121/Grafana+Tempo" target="_blank"
-            rel="noopener noreferrer">
-            Documentação do Grafana Tempo
-          </a>
-        </h2>
-      </div>
-    </div>
   </div>
-
+  
   <div class="footer">
-    <!-- Adicionar links do confluence para Obervability -->
-  </div>
+    <h2 class="linkFooter">
+      <a href="https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3138977919/Observability" target="_blank" rel="noopener noreferrer">
+        Time de Observability
+      </a>
+    </h2>
+  </h2>
+</div>
 </body>
+<!-- <div class="container" id="sos" style="display: flex;">
+  <div class="box">
+    <h2 class="question">4. Você tem acesso a ferramenta SOS?</h2>
+    <button class="btn" onclick="documentacao(true)">Sim</button>
+    <button class="btn" onclick="documentacao(false)">Não</button>
+    <h2 class="link">
+      <a href="https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3178267886/Grafana+Dev" target="_blank"
+        rel="noopener noreferrer">
+        Orientação de acesso no Confluence
+      </a>
+    </h2>
+  </div>
+</div> -->
 
+<!-- <div class="container" id="tracesDoc" style="display: none;">
+  <div class="box">
+    <h2 class="link">
+      <a href="https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3178267121/Grafana+Tempo" target="_blank" rel="noopener noreferrer">
+        Documentação do Grafana Tempo
+      </a>
+    </h2>
+  </div>
+</div> -->
 </html>
 <script src="./script.js"></script>

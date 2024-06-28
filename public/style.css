@@ -176,3 +176,26 @@ body {
   color: var(--amareloDock);
   background-color: var(--preto);
 }
+
+.linkFooter a {
+  color: var(--amareloDock);
+  background-color: var(--preto);
+  border-radius: 4px;
+  padding: 5px 10px;
+  transition: all 0.1s;
+}
+
+.linkFooter a:hover {
+  color: var(--preto);
+  background-color: var(--amareloDock);
+}
+
+.footer {
+  margin-top: 30px;
+  padding-left: 20px;
+  max-width: 100vw;
+  height: 100px;
+  background-color: var(--preto);
+  display: flex;
+  align-items: center;
+}

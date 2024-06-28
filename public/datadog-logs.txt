@@ -28,7 +28,7 @@ Onboarding logs DataDog
 
 Possui acesso ao DataDog
 -Sim
--Não
+-Não 
 //R:Não (https://docktech.atlassian.net/wiki/spaces/CLOUD/pages/3170402376/DataDog+-+User)
 
 Qual provedor a aplicação utiliza?

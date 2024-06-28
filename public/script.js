@@ -1,3 +1,15 @@
+class Resposta {
+    constructor(question, index) {
+        this.question = question
+        this.answer = ""
+        this.index = index
+    }
+
+    addAnswer(answer) {
+        this.answer = answer
+    }
+}
+
 class Formulario {
     constructor() {
         this.email = ""
@@ -17,19 +29,9 @@ class Formulario {
     }
 }
 
-class Resposta {
-    constructor(question, index) {
-        this.question = question
-        this.answer = ""
-        this.index = index
-    }
-
-    addAnswer (answer) {
-        this.answer = answer
-    }
-}
-
 const form = new Formulario()
+
+var ferramenta = []
 
 function loadQuestions(qtdQuestoes) {
     sessionStorage.setItem("questoes", qtdQuestoes)
@@ -395,28 +397,13 @@ function addSelectionListener(buttons, index) {
         button.addEventListener('click', (event) => {
             console.log(event.target.textContent)
             handleButtonClick(event, index)
-            buttons.forEach(btn => btn.classList.remove('btn-selected'));
-            button.classList.add('btn-selected');
-        });
-    });
-}
 
-function addSelectionListenerCheck(buttons, checkboxDiv) {
-    buttons.forEach(button => {
-        button.addEventListener('click', function () {
+            // desmarca os outros botões
             buttons.forEach(btn => btn.classList.remove('btn-selected'));
+
+            // Faz com que o botão selecionado fique em destaque
             button.classList.add('btn-selected');
-            // Desmarca a checkbox e limpa o input
-            checkboxDiv.querySelector('input[type="checkbox"]').checked = false;
-            checkboxDiv.querySelector('input[type="text"]').value = "";
         });
-    });
-    checkboxDiv.addEventListener('click', function () {
-        // Desmarca os botões
-        buttons.forEach(btn => btn.classList.remove('btn-selected'));
-        // Coloca o foco na input
-        checkboxDiv.querySelector('input[type="checkbox"]').checked = true;
-        checkboxDiv.querySelector('input[type="text"]').focus();
     });
 }
 
@@ -514,34 +501,64 @@ document.addEventListener('DOMContentLoaded', () => {
     var inpEmail = email.querySelector('input');
     inpEmail.addEventListener('input', (event) => handleInputChange(event, 0));
     form.addQuestion(new Resposta(email.querySelector('h2').innerText, 0));
-    
+
     var name = document.getElementById('apiName');
     var inpName = name.querySelector('input');
     inpName.addEventListener('input', (event) => handleInputChange(event, 1));
     form.addQuestion(new Resposta(name.querySelector('h2').innerText, 1));
-    
+
     var ambient = document.getElementById('ambient');
     var btnAmbient = ambient.querySelectorAll('button');
-    // var btnCheck = ambient.querySelector('.btnCheck');
-    // addSelectionListenerCheck(btnAmbient, btnCheck);
     addSelectionListener(btnAmbient, 2);
     form.addQuestion(new Resposta(ambient.querySelector('h2').innerText, 2));
-    // var inpCheck = btnCheck.querySelector('input[type="text"]');
-    // inpCheck.addEventListener('input', (event) => handleInputChange(event, 2));
-    
+
     var sos = document.getElementById('sos');
     var btnSos = sos.querySelectorAll('button');
     addSelectionListener(btnSos, 3);
     form.addQuestion(new Resposta(sos.querySelector('h2').innerText, 3));
-    
+
     var pilar = document.getElementById('pilarObs');
     var btnPilar = pilar.querySelectorAll('button');
     addSelectionListener(btnPilar, 4);
     form.addQuestion(new Resposta(pilar.querySelector('h2').innerText, 4));
 });
 
-function devAmbient() {
-    document.getElementById('sos').style.display = "flex"
+// "SOS",
+// "Splunk",
+// "Grafana",
+// "Datadog"
+
+function selectAmbient(ambient) {
+    if (ambient == "dev") {
+        ferramenta = ["SOS"]
+    } else {
+        ferramenta = ["Grafana", "Splunk", "DataDog"]
+    }
+}
+
+function selectComplexidade(grau) {
+    if (ferramenta[0] != "SOS") {
+        // complexidade baixa
+        if (grau == 1) {
+            for (let i = 0; i < ferramenta.length; i++) {
+                if (ferramenta[i] == "DataDog") {
+                    ferramenta.splice(i, 1);
+                    break;
+                }
+            }
+        } else if (grau == 2) {
+            // complexidade média
+            ferramenta = ["Grafana", "Splunk", "DataDog"]
+        } else {
+            // complexidade alta
+            for (let i = 0; i < ferramenta.length; i++) {
+                if (ferramenta[i] == "Grafana") {
+                    ferramenta.splice(i, 1);
+                    break;
+                }
+            }
+        }
+    }
 }
 
 function documentacao(acesso) {
@@ -583,8 +600,4 @@ function caminhoPilar(pilar) {
         removerMetrics();
         document.getElementById('tracesDoc').style.display = "flex";
     }
-}
-
-function extraElements(id, remove) {
-    
 }
